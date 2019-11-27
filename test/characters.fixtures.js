@@ -2,7 +2,7 @@ function makeCharactersArray() {
     return [
         {
             id: 1,
-            date_created: '2019-11-26T16:22:32.615Z',
+            date_created: '2019-11-27T14:24:04.000Z',
             fullname: 'Rock',
             gender: 'Paper-plane',
             race: 'Tree',
@@ -17,6 +17,10 @@ function makeCharactersArray() {
 
             strength_race_bonus: 3,
             charisma_race_bonus: 3,
+            dexterity_race_bonus: null,
+            constitution_race_bonus: null,
+            intelligence_race_bonus: null,
+            wisdom_race_bonus: null,
 
             strength_total: 14,
             dexterity_total: 12,
