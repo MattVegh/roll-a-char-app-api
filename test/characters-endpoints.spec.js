@@ -18,7 +18,7 @@ describe('Characters Endpoints', function () {
     before('clean the table', () => db.raw('TRUNCATE characters'))
 
     describe('GET /characters', () => {
-        context('given no chacters', () => {
+        context('given no characters', () => {
             it('responds with 200 empty list', () => {
                 return supertest(app)
                     .get('/characters')
