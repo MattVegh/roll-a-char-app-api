@@ -2,7 +2,7 @@ function makeCharactersArray() {
     return [
         {
             id: 1,
-            date_created: '2019-11-27T14:24:04.000Z',
+            date_created: new Date(),
             fullname: 'Rock',
             gender: 'Paper-plane',
             race: 'Tree',
