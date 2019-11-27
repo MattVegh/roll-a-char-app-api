@@ -4,6 +4,7 @@ CREATE TABLE characters (
     gender TEXT NOT NULL,
     race TEXT NOT NULL,
     class TEXT NOT NULL,
+
     strength_original INTEGER NOT NULL,
     dexterity_original INTEGER NOT NULL,
     constitution_original INTEGER NOT NULL,
@@ -31,7 +32,7 @@ CREATE TABLE characters (
     intelligence_modifier TEXT NOT NULL,
     widsom_modifier TEXT NOT NULL,
     charisma_modifier TEXT NOT NULL,
-    
+
     bio text,
-    date_created, TIMESTAMP NOT NULL DEFAULT now()
+    date_created TIMESTAMP NOT NULL DEFAULT now()
 )

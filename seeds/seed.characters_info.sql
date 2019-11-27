@@ -28,7 +28,7 @@ INSERT INTO characters (
     widsom_modifier,
     charisma_modifier,
 
-    bio,
+    bio
     )
 
     VALUES (
