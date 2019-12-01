@@ -15,7 +15,7 @@ describe('Characters Endpoints', function () {
 
     after('disconnect from db', () => db.destroy())
 
-    before('clean the table', () => db.raw('TRUNCATE characters RESTART IDENTITY CASCADE'))
+    afterEach('clean the table', () => db.raw('TRUNCATE characters RESTART IDENTITY CASCADE'))
 
     describe('GET /characters', () => {
         context('given no characters', () => {
@@ -87,20 +87,23 @@ describe('Characters Endpoints', function () {
                 .post('/characters')
                 .send(newCharacter)
                 .expect(201)
-                .then(res => {
-                    console.log('res body is', res.body)
-                    console.log('new character is', newCharacter)
+                .expect(res => {
+                    // console.log('res body is', res.body)
+                    // console.log('new character is', newCharacter)
                     const expected = { ...newCharacter, id: 1 }
                     const { date_created, ...actual } = res.body[0]
                     expect(actual).to.eql(expected)
-
-                    //expect(res.body[0]).to.include(expected)
-                    //expect(res.body[0]).to.have.property('id')
                 })
+
                 .then(postRes =>
-                    supertest(app)
-                        .get(`/characters/${postRes.body.id}`)
-                        .expect(postRes.body)
+                    db('characters').where('id', postRes.body[0].id).first()
+                        .then((character) => {
+                            expect(character).to.eql({
+                                ...postRes.body[0],
+                                date_created: new Date(postRes.body[0].date_created)
+                            })
+                        }
+                        )
                 )
         })
 
