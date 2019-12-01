@@ -87,7 +87,7 @@ describe('Characters Endpoints', function () {
                 .post('/characters')
                 .send(newCharacter)
                 .expect(201)
-                .expect(res => {
+                .then(res => {
                     console.log('res body is', res.body)
                     console.log('new character is', newCharacter)
                     const expected = { ...newCharacter, id: 1 }
