@@ -15,7 +15,7 @@ describe('Characters Endpoints', function () {
 
     after('disconnect from db', () => db.destroy())
 
-    before('clean the table', () => db.raw('TRUNCATE characters'))
+    before('clean the table', () => db.raw('TRUNCATE characters RESTART IDENTITY CASCADE'))
 
     describe('GET /characters', () => {
         context('given no characters', () => {
@@ -46,6 +46,7 @@ describe('Characters Endpoints', function () {
     describe('POST /characters', () => {
         it('created a character, responds with 201 and new character', function () {
             const newCharacter = {
+
                 fullname: 'Test',
                 gender: 'For POST',
                 race: 'Tree',
@@ -79,51 +80,20 @@ describe('Characters Endpoints', function () {
                 widsom_modifier: '0',
                 charisma_modifier: '+3',
 
-                bio: 'Snip snip'
+                bio: 'Snip snip',
+                date_created: new Date(),
             }
             return supertest(app)
                 .post('/characters')
                 .send(newCharacter)
                 .expect(201)
                 .expect(res => {
-                    console.log('test response is', res.body)
-                    console.log('newCharacter', newCharacter)
-                    expect(res.body.fullname).to.eql(newCharacter.fullname)
-                    expect(res.body.gender).to.eql(newCharacter.gender)
-                    expect(res.body.race).to.eql(newCharacter.race)
-                    expect(res.body.class_type).to.eql(newCharacter.class_type)
-
-                    expect(res.body.strength_original).to.eql(newCharacter.strength_original)
-                    expect(res.body.dexterity_original).to.eql(newCharacter.dexterity_original)
-                    expect(res.body.constitution_original).to.eql(newCharacter.constitution_original)
-                    expect(res.body.intelligence_original).to.eql(newCharacter.intelligence_original)
-                    expect(res.body.wisdom_original).to.eql(newCharacter.wisdom_original)
-                    expect(res.body.charisma_original).to.eql(newCharacter.charisma_original)
-
-                    expect(res.body.strength_race_bonus).to.eql(newCharacter.strength_race_bonus)
-                    expect(res.body.charisma_race_bonus).to.eql(newCharacter.charisma_race_bonus)
-                    expect(res.body.dexterity_race_bonus).to.eql(newCharacter.dexterity_race_bonus)
-                    expect(res.body.constitution_race_bonus).to.eql(newCharacter.constitution_race_bonus)
-                    expect(res.body.intelligence_race_bonus).to.eql(newCharacter.intelligence_race_bonus)
-                    expect(res.body.wisdom_race_bonus).to.eql(newCharacter.wisdom_race_bonus)
-
-                    expect(res.body.strength_total).to.eql(newCharacter.strength_total)
-                    expect(res.body.dexterity_total).to.eql(newCharacter.dexterity_total)
-                    expect(res.body.constitution_total).to.eql(newCharacter.constitution_total)
-                    expect(res.body.intelligence_total).to.eql(newCharacter.intelligence_total)
-                    expect(res.body.wisdom_total).to.eql(newCharacter.wisdom_total)
-                    expect(res.body.charisma_total).to.eql(newCharacter.charisma_total)
-
-                    expect(res.body.strength_modifier).to.eql(newCharacter.strength_modifier)
-                    expect(res.body.dexterity_modifier).to.eql(newCharacter.dexterity_modifier)
-                    expect(res.body.constitution_modifier).to.eql(newCharacter.constitution_modifier)
-                    expect(res.body.intelligence_modifier).to.eql(newCharacter.intelligence_modifier)
-                    expect(res.body.widsom_modifier).to.eql(newCharacter.widsom_modifier)
-                    expect(res.body.charisma_modifier).to.eql(newCharacter.charisma_modifier)
-
-                    expect(res.body.bio).to.eql(newCharacter.bio)
-
-                    expect(res.body).to.have.property('id')
+                    const expected = { ...newCharacter, id: 1 }
+                    console.log('res body is', res.body)
+                    console.log('newCharacter is', newCharacter)
+                    expect({...res.body[0], date_created: undefined }).to.eql(expected)
+                    //expect(res.body[0]).to.include(expected)
+                    //expect(res.body[0]).to.have.property('id')
                 })
                 .then(postRes =>
                     supertest(app)
