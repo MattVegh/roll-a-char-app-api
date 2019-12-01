@@ -2,7 +2,7 @@ INSERT INTO characters (
     fullname, 
     gender, 
     race, 
-    class, 
+    class_type, 
 
     strength_original,
     dexterity_original,

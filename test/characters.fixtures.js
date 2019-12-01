@@ -1,4 +1,5 @@
 function makeCharactersArray() {
+
     return [
         {
             id: 1,
@@ -6,7 +7,7 @@ function makeCharactersArray() {
             fullname: 'Rock',
             gender: 'Paper-plane',
             race: 'Tree',
-            class: 'Scissors',
+            classType: 'Scissors',
 
             strength_original: 11,
             dexterity_original: 12,
@@ -29,12 +30,12 @@ function makeCharactersArray() {
             wisdom_total: 11,
             charisma_total: 17,
 
-            strength_modifier: '+2' ,
-            dexterity_modifier: '+1' ,
-            constitution_modifier: '+2' ,
-            intelligence_modifier: '+2' ,
-            widsom_modifier: '0' ,
-            charisma_modifier: '+3' ,
+            strength_modifier: '+2',
+            dexterity_modifier: '+1',
+            constitution_modifier: '+2',
+            intelligence_modifier: '+2',
+            widsom_modifier: '0',
+            charisma_modifier: '+3',
 
             bio: 'Snip snip'
         }

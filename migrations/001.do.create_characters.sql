@@ -3,7 +3,7 @@ CREATE TABLE characters (
     fullname TEXT NOT NULL,
     gender TEXT NOT NULL,
     race TEXT NOT NULL,
-    class TEXT NOT NULL,
+    class_type TEXT NOT NULL,
 
     strength_original INTEGER NOT NULL,
     dexterity_original INTEGER NOT NULL,
