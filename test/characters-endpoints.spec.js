@@ -88,12 +88,12 @@ describe('Characters Endpoints', function () {
                 .send(newCharacter)
                 .expect(201)
                 .expect(res => {
-                    const expected = { ...newCharacter, id: 1 }
                     console.log('res body is', res.body)
                     console.log('newCharacter is', newCharacter)
-                    .expect(res => {
-                        const { date_created, ...actual } = res.body[0]
-                        expect(actual).to.eql(expected)})
+                    const expected = { ...newCharacter, id: 1 }
+                    const { date_created, ...actual } = res.body[0]
+                    expect(actual).to.eql(expected)
+
                     //expect(res.body[0]).to.include(expected)
                     //expect(res.body[0]).to.have.property('id')
                 })
