@@ -12,26 +12,12 @@ CREATE TABLE characters (
     wisdom_original INTEGER NOT NULL,
     charisma_original INTEGER NOT NULL,
 
-    -- strength_race_bonus INTEGER,
-    -- dexterity_race_bonus INTEGER,
-    -- constitution_race_bonus INTEGER,
-    -- intelligence_race_bonus INTEGER,
-    -- wisdom_race_bonus INTEGER,
-    -- charisma_race_bonus INTEGER,
-
     strength_total INTEGER NOT NULL,
     dexterity_total INTEGER NOT NULL,
     constitution_total INTEGER NOT NULL,
     intelligence_total INTEGER NOT NULL,
     wisdom_total INTEGER NOT NULL,
     charisma_total INTEGER NOT NULL,
-
-    -- strength_modifier TEXT,
-    -- dexterity_modifier TEXT,
-    -- constitution_modifier TEXT,
-    -- intelligence_modifier TEXT,
-    -- widsom_modifier TEXT,
-    -- charisma_modifier TEXT,
 
     bio text,
     date_created TIMESTAMP NOT NULL DEFAULT now()
