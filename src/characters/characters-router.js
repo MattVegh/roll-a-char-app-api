@@ -70,7 +70,7 @@ characterRouter
                     
                     .json(character)
             })
-            .catch(next)
+            .catch((e) => console.log(e), next)
     })
 
 
