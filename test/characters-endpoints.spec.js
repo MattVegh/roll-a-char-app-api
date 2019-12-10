@@ -77,7 +77,7 @@ describe('Characters Endpoints', function () {
                 dexterity_modifier: '+1',
                 constitution_modifier: '+2',
                 intelligence_modifier: '+2',
-                widsom_modifier: '0',
+                wisdom_modifier: '0',
                 charisma_modifier: '+3',
 
                 bio: 'Snip snip',
