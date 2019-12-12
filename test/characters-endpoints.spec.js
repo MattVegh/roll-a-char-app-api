@@ -81,15 +81,12 @@ describe('Characters Endpoints', function () {
                 charisma_modifier: '+3',
 
                 bio: 'Snip snip',
-                //date_created: new Date(),
             }
             return supertest(app)
                 .post('/characters')
                 .send(newCharacter)
                 .expect(201)
                 .expect(res => {
-                    // console.log('res body is', res.body)
-                    // console.log('new character is', newCharacter)
                     const expected = { ...newCharacter, id: 1 }
                     const { date_created, ...actual } = res.body[0]
                     expect(actual).to.eql(expected)
