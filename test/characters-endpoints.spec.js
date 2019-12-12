@@ -25,22 +25,6 @@ describe('Characters Endpoints', function () {
                     .expect(200, [])
             })
         })
-
-        // context('given there are characters in the database', () => {
-        //     const testCharacters = makeCharactersArray();
-
-        //     beforeEach('insert characters', () => {
-        //         return db
-        //         .into('characters')
-        //         .insert(testCharacters)
-
-        //     })
-        //     it('responds with all of the characters', () => {
-        //         return supertest(app)
-        //         .get('/characters')
-        //         .expect(200, testCharacters)
-        //     })
-        // })
     })
 
     describe('POST /characters', () => {
